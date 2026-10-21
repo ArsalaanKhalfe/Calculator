@@ -1,0 +1,70 @@
+import math
+
+history = []
+
+operator = input("Enter the Operator: ")
+
+
+def calculator(user1, user2, operator):
+    if operator == '+':
+        return user1 + user2
+
+    elif operator == '-':
+        return user1 - user2
+
+    elif operator == '*':
+        return user1 * user2
+
+    elif operator == '/':
+        if user2 == 0:
+            return "Cannot divide by Zero."
+        return user1 / user2
+
+    elif operator == '//':
+        if user2 == 0:
+            return "Cannot divide by Zero."
+        return user1 // user2
+
+    elif operator == '%':
+        if user2 == 0:
+            return "Cannot divide by Zero."
+        return user1 % user2
+
+    elif operator == '**':
+        return user1 ** user2
+
+    elif operator == 'percent':
+        if user2 == 0:
+            return "Cannot calculate percentage with zero as the second number."
+        return (user1 / user2) * 100
+
+    elif operator == 'sqrt':
+        if user1 < 0:
+            return "Cannot calculate square root of a negative number."
+        return math.sqrt(user1)
+
+    elif operator == 'abs':
+        return abs(user1)
+
+    elif operator == 'factorial':
+        if user1 < 0 or not user1.is_integer():
+            return "Factorial requires a non-negative integer."
+        return math.factorial(int(user1))
+
+    else:
+        return "Wrong Operator Entered."
+
+
+try:
+    user1 = float(input("Enter the first number: "))
+
+    if operator in ['sqrt', 'abs', 'factorial']:
+        user2 = 0
+    else:
+        user2 = float(input("Enter the second number: "))
+
+    result = calculator(user1, user2, operator)
+    print("Result:", result)
+
+except ValueError:
+    print("Invalid input. Please enter a valid number.")
